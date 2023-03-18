@@ -236,4 +236,18 @@
                 app:drawableRightCompat="@drawable/round_chevron_right_24" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#18AF75"
+        android:insetLeft="50dp"
+        android:insetRight="50dp"
+        android:text="Install"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#00FFFFFF" />
 </androidx.constraintlayout.widget.ConstraintLayout>
