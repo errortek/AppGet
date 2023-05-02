@@ -55,27 +55,6 @@ public class STActivity2 extends AppCompatActivity {
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "USP.apk");
                 downloadmanager.enqueue(request);
-                try {
-
-                    File outputFile = new File(Environment.DIRECTORY_DOWNLOADS, "USP.apk");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri apkUri = FileProvider.getUriForFile(getApplicationContext(), BuildConfig.APPLICATION_ID + ".provider", outputFile);
-                        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-                        intent.setData(apkUri);
-                        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        getApplicationContext().startActivity(intent);
-                    } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N){
-                        Uri apkUri = Uri.fromFile(outputFile);
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        getApplicationContext().startActivity(intent);
-                    }else {
-                        Toast.makeText(getApplicationContext(), "File not found.", Toast.LENGTH_LONG).show();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             };
         });
         setSupportActionBar(toolbar);
