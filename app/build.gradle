@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.jpb.android.appget'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.jpb.android.appget"
         minSdk 22
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
