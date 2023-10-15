@@ -62,6 +62,8 @@ public class STActivity2 extends AppCompatActivity {
         setSupportActionBar(toolbar);
         readUpdateDate();
         readVersion();
+        readDescription();
+        readChangelog();
     }
 
     private void readUpdateDate() {
@@ -123,6 +125,117 @@ public class STActivity2 extends AppCompatActivity {
                         public void run() {
                             TextView text = (TextView) findViewById(R.id.textView10);
                             text.setText("Version: " + bo.toString());
+                            try {
+                                bo.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
+    }
+    private void readDescription() {
+        new Thread() {
+            @Override
+            public void run() {
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt";
+                URL u = null;
+                try {
+                    u = new URL(path);
+                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
+                    c.setRequestMethod("GET");
+                    c.connect();
+                    InputStream in = c.getInputStream();
+                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    in.read(buffer); // Read from Buffer.
+                    bo.write(buffer); // Write Into Buffer.
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView14);
+                            text.setText(bo.toString());
+                            try {
+                                bo.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
+    }
+    private void readChangelog() {
+        new Thread() {
+            @Override
+            public void run() {
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                URL u = null;
+                try {
+                    u = new URL(path);
+                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
+                    c.setRequestMethod("GET");
+                    c.connect();
+                    InputStream in = c.getInputStream();
+                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    in.read(buffer); // Read from Buffer.
+                    bo.write(buffer); // Write Into Buffer.
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView16);
+                            text.setText(bo.toString());
+                            try {
+                                bo.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
+    }
+    private void readinfos() {
+        new Thread() {
+            @Override
+            public void run() {
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                URL u = null;
+                try {
+                    u = new URL(path);
+                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
+                    c.setRequestMethod("GET");
+                    c.connect();
+                    InputStream in = c.getInputStream();
+                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    in.read(buffer); // Read from Buffer.
+                    bo.write(buffer); // Write Into Buffer.
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView13);
+                            text.setText(bo.toString());
                             try {
                                 bo.close();
                             } catch (IOException e) {
