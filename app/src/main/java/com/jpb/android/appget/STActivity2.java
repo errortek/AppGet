@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,5 +66,27 @@ public class STActivity2 extends AppCompatActivity {
         });
         setSupportActionBar(toolbar);
 
+        try {
+            url = new URL(TextFileURL);
+            TextView text10 = (TextView) findViewById(R.id.textView10);
+
+            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
+            StringBuilder sb = new StringBuilder();
+            String newline = System.getProperty("line.separator");
+            String line;
+
+            try {
+                while ((line = bufferReader.readLine()) != null) {
+                    sb.append(line);
+                    sb.append(newline);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            text10.setText(sb.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
