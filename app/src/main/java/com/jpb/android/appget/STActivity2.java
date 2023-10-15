@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,12 +30,16 @@ public class STActivity2 extends AppCompatActivity {
 
     String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt" ;
     String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt" ;
+    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt" ;
+    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt" ;
     TextView textView10;
     TextView textView11;
+    TextView textView14;
+    TextView textView16;
     Toolbar toolbar;
     Button installbut;
     URL url ;
-    String TextHolder = "" , TextHolder2 = "";
+    String TextHolder = "" , TextHolder2 = "", TextHolder3 = "", TextHolder4 = "", TextHolder5 = "";
     BufferedReader bufferReader ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class STActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_stactivity2);
         textView10 = this.findViewById(R.id.textView10);
         textView11 = this.findViewById(R.id.textView11);
+        textView14 = this.findViewById(R.id.textView14);
+        textView16 = this.findViewById(R.id.textView16);
         toolbar = this.findViewById(R.id.toolbar);
         installbut = this.findViewById(R.id.button2);
         installbut.setOnClickListener(new View.OnClickListener(){
@@ -58,96 +65,28 @@ public class STActivity2 extends AppCompatActivity {
             };
         });
         setSupportActionBar(toolbar);
-        new GetUpdateDate().execute();
 
-    }
+        try {
+            url = new URL(TextFileURL);
+            TextView text10 = (TextView) findViewById(R.id.textView10);
 
-    @SuppressLint("StaticFieldLeak")
-    public class GetUpdateDate extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            try {
-                url = new URL(TextFileURL);
-
-                bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
-
-                while ((TextHolder2 = bufferReader.readLine()) != null) {
-
-                    TextHolder += TextHolder2;
-                }
-                bufferReader.close();
-
-            } catch (MalformedURLException malformedURLException) {
-
-                // TODO Auto-generated catch block
-                malformedURLException.printStackTrace();
-                TextHolder = malformedURLException.toString();
-
-            } catch (IOException iOException) {
-
-                // TODO Auto-generated catch block
-                iOException.printStackTrace();
-
-                TextHolder = iOException.toString();
-            }
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(Void finalTextHolder) {
-
-            textView11.setText("Updated: " + TextHolder);
-
-            super.onPostExecute(finalTextHolder);
-        }
-
-    }
-    @SuppressLint("StaticFieldLeak")
-    public class GetLatestVersion extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
+            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
+            StringBuilder sb = new StringBuilder();
+            String newline = System.getProperty("line.separator");
+            String line;
 
             try {
-                url = new URL(TextFileURL2);
-
-                bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
-
-                while ((TextHolder2 = bufferReader.readLine()) != null) {
-
-                    TextHolder += TextHolder2;
+                while ((line = bufferReader.readLine()) != null) {
+                    sb.append(line);
+                    sb.append(newline);
                 }
-                bufferReader.close();
-
-            } catch (MalformedURLException malformedURLException) {
-
-                // TODO Auto-generated catch block
-                malformedURLException.printStackTrace();
-                TextHolder = malformedURLException.toString();
-
-            } catch (IOException iOException) {
-
-                // TODO Auto-generated catch block
-                iOException.printStackTrace();
-
-                TextHolder = iOException.toString();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            return null;
-
+            text10.setText(sb.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        @Override
-        protected void onPostExecute(Void finalTextHolder) {
-
-            textView10.setText("Version: " + TextHolder);
-
-            super.onPostExecute(finalTextHolder);
-        }
-
     }
 }
