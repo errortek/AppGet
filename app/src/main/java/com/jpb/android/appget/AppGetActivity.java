@@ -1,8 +1,5 @@
 package com.jpb.android.appget;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
@@ -12,21 +9,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
-public class STActivity2 extends AppCompatActivity {
+public class AppGetActivity extends AppCompatActivity {
 
-    String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt" ;
-    String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt" ;
-    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt" ;
-    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt" ;
+    String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/updated_date.txt" ;
+    String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/version.txt" ;
+    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/description.txt" ;
+    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/changelog.txt" ;
     TextView textView10;
     TextView textView11;
     TextView textView14;
@@ -49,13 +47,13 @@ public class STActivity2 extends AppCompatActivity {
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/app-release.apk");
+                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/app-release.apk");
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
                 request.setTitle("Unified ScratchTappy Platform");
                 request.setDescription("Downloading");
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "USP.apk");
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "AppGet.apk");
                 downloadmanager.enqueue(request);
             };
         });
@@ -70,7 +68,7 @@ public class STActivity2 extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/updated_date.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -107,7 +105,7 @@ public class STActivity2 extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/version.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -144,7 +142,7 @@ public class STActivity2 extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/description.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -181,7 +179,7 @@ public class STActivity2 extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/changelog.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -218,7 +216,7 @@ public class STActivity2 extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/changelog.txt";
                 URL u = null;
                 try {
                     u = new URL(path);

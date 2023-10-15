@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.jpb.android.appget.AppGetActivity
 import com.jpb.android.appget.STActivity2
 import com.jpb.android.appget.databinding.FragmentHomeBinding
 
@@ -36,6 +37,12 @@ class HomeFragment : Fragment() {
         button.setOnClickListener {
                 val intent = Intent(this@HomeFragment.requireContext(), STActivity2::class.java)
                 startActivity(intent)
+        }
+
+        val button3: Button = binding.button3
+        button.setOnClickListener {
+            val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
+            startActivity(intent)
         }
 
         val textView: TextView = binding.textHome

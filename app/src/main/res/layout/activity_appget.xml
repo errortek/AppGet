@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_launcher_background" />
+                    app:srcCompat="@mipmap/ic_launcher" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Unified ScratchTappy Platform"
+                        android:text="AppGet"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -94,13 +94,13 @@
                             android:id="@+id/chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Clicker Games" />
+                            android:text="App Store" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="System Information Tools" />
+                            android:text="Tools/Utilities" />
                     </com.google.android.material.chip.ChipGroup>
                 </LinearLayout>
             </LinearLayout>
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="24.39M"
+                        android:text="7.04M"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
