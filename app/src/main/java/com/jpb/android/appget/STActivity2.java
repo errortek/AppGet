@@ -2,28 +2,23 @@ package com.jpb.android.appget;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.FileProvider;
 
-import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class STActivity2 extends AppCompatActivity {
@@ -65,28 +60,82 @@ public class STActivity2 extends AppCompatActivity {
             };
         });
         setSupportActionBar(toolbar);
+        readUpdateDate();
+        readVersion();
+    }
 
-        try {
-            url = new URL(TextFileURL);
-            TextView text10 = (TextView) findViewById(R.id.textView10);
+    private void readUpdateDate() {
+        new Thread() {
+            @Override
+            public void run() {
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt";
+                URL u = null;
+                try {
+                    u = new URL(path);
+                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
+                    c.setRequestMethod("GET");
+                    c.connect();
+                    InputStream in = c.getInputStream();
+                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    in.read(buffer); // Read from Buffer.
+                    bo.write(buffer); // Write Into Buffer.
 
-            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuilder sb = new StringBuilder();
-            String newline = System.getProperty("line.separator");
-            String line;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView11);
+                            text.setText("Updated: " + bo.toString());
+                            try {
+                                bo.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
 
-            try {
-                while ((line = bufferReader.readLine()) != null) {
-                    sb.append(line);
-                    sb.append(newline);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            text10.setText(sb.toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            }
+        }.start();
+    }
+    private void readVersion() {
+        new Thread() {
+            @Override
+            public void run() {
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt";
+                URL u = null;
+                try {
+                    u = new URL(path);
+                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
+                    c.setRequestMethod("GET");
+                    c.connect();
+                    InputStream in = c.getInputStream();
+                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[1024];
+                    in.read(buffer); // Read from Buffer.
+                    bo.write(buffer); // Write Into Buffer.
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView text = (TextView) findViewById(R.id.textView10);
+                            text.setText("Version: " + bo.toString());
+                            try {
+                                bo.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
     }
 }
