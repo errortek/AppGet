@@ -38,7 +38,7 @@ public class STActivity2 extends AppCompatActivity {
     Toolbar toolbar;
     Button installbut;
     URL url ;
-    String TextHolder = "" , TextHolder2 = "", TextHolder3 = "";
+    String TextHolder = "" , TextHolder2 = "", TextHolder3 = "", TextHolder4 = "", TextHolder5 = "";
     BufferedReader bufferReader ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class STActivity2 extends AppCompatActivity {
         new GetUpdateDate().execute();
         new GetLatestVersion().execute();
         new GetAppDescription().execute();
+        new GetAppChangelog().execute();
 
     }
 
@@ -125,9 +126,9 @@ public class STActivity2 extends AppCompatActivity {
 
                 bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-                while ((TextHolder2 = bufferReader.readLine()) != null) {
+                while ((TextHolder3 = bufferReader.readLine()) != null) {
 
-                    TextHolder += TextHolder2;
+                    TextHolder += TextHolder3;
                 }
                 bufferReader.close();
 
@@ -152,7 +153,7 @@ public class STActivity2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void finalTextHolder) {
 
-            textView10.setText("Version: " + TextHolder);
+            textView10.setText("Version: " + TextHolder3);
 
             super.onPostExecute(finalTextHolder);
         }
@@ -170,9 +171,9 @@ public class STActivity2 extends AppCompatActivity {
 
                 bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-                while ((TextHolder2 = bufferReader.readLine()) != null) {
+                while ((TextHolder4 = bufferReader.readLine()) != null) {
 
-                    TextHolder += TextHolder2;
+                    TextHolder += TextHolder4;
                 }
                 bufferReader.close();
 
@@ -197,7 +198,7 @@ public class STActivity2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void finalTextHolder) {
 
-            textView14.setText(TextHolder);
+            textView14.setText(TextHolder4);
 
             super.onPostExecute(finalTextHolder);
         }
@@ -210,13 +211,13 @@ public class STActivity2 extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
 
             try {
-                url = new URL(TextFileURL3);
+                url = new URL(TextFileURL4);
 
                 bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
 
-                while ((TextHolder2 = bufferReader.readLine()) != null) {
+                while ((TextHolder5 = bufferReader.readLine()) != null) {
 
-                    TextHolder += TextHolder2;
+                    TextHolder += TextHolder5;
                 }
                 bufferReader.close();
 
@@ -241,7 +242,7 @@ public class STActivity2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void finalTextHolder) {
 
-            textView16.setText(TextHolder);
+            textView16.setText(TextHolder5);
 
             super.onPostExecute(finalTextHolder);
         }
