@@ -29,12 +29,16 @@ public class STActivity2 extends AppCompatActivity {
 
     String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt" ;
     String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt" ;
+    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt" ;
+    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt" ;
     TextView textView10;
     TextView textView11;
+    TextView textView14;
+    TextView textView16;
     Toolbar toolbar;
     Button installbut;
     URL url ;
-    String TextHolder = "" , TextHolder2 = "";
+    String TextHolder = "" , TextHolder2 = "", TextHolder3 = "";
     BufferedReader bufferReader ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class STActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_stactivity2);
         textView10 = this.findViewById(R.id.textView10);
         textView11 = this.findViewById(R.id.textView11);
+        textView14 = this.findViewById(R.id.textView14);
+        textView16 = this.findViewById(R.id.textView16);
         toolbar = this.findViewById(R.id.toolbar);
         installbut = this.findViewById(R.id.button2);
         installbut.setOnClickListener(new View.OnClickListener(){
@@ -59,6 +65,8 @@ public class STActivity2 extends AppCompatActivity {
         });
         setSupportActionBar(toolbar);
         new GetUpdateDate().execute();
+        new GetLatestVersion().execute();
+        new GetAppDescription().execute();
 
     }
 
@@ -149,5 +157,93 @@ public class STActivity2 extends AppCompatActivity {
             super.onPostExecute(finalTextHolder);
         }
 
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public class GetAppDescription extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            try {
+                url = new URL(TextFileURL3);
+
+                bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                while ((TextHolder2 = bufferReader.readLine()) != null) {
+
+                    TextHolder += TextHolder2;
+                }
+                bufferReader.close();
+
+            } catch (MalformedURLException malformedURLException) {
+
+                // TODO Auto-generated catch block
+                malformedURLException.printStackTrace();
+                TextHolder = malformedURLException.toString();
+
+            } catch (IOException iOException) {
+
+                // TODO Auto-generated catch block
+                iOException.printStackTrace();
+
+                TextHolder = iOException.toString();
+            }
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Void finalTextHolder) {
+
+            textView14.setText(TextHolder);
+
+            super.onPostExecute(finalTextHolder);
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public class GetAppChangelog extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            try {
+                url = new URL(TextFileURL3);
+
+                bufferReader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+                while ((TextHolder2 = bufferReader.readLine()) != null) {
+
+                    TextHolder += TextHolder2;
+                }
+                bufferReader.close();
+
+            } catch (MalformedURLException malformedURLException) {
+
+                // TODO Auto-generated catch block
+                malformedURLException.printStackTrace();
+                TextHolder = malformedURLException.toString();
+
+            } catch (IOException iOException) {
+
+                // TODO Auto-generated catch block
+                iOException.printStackTrace();
+
+                TextHolder = iOException.toString();
+            }
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Void finalTextHolder) {
+
+            textView16.setText(TextHolder);
+
+            super.onPostExecute(finalTextHolder);
+        }
     }
 }
