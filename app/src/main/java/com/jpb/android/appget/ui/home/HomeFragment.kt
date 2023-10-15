@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         }
 
         val button3: Button = binding.button3
-        button.setOnClickListener {
+        button3.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
             startActivity(intent)
         }
