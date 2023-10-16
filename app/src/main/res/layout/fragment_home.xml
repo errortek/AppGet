@@ -41,7 +41,6 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center_horizontal|center_vertical"
-                        android:src="@drawable/ic_launcher_background"
                         app:srcCompat="@mipmap/ic_st" />
 
                     <TextView
@@ -108,7 +107,6 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center_horizontal|center_vertical"
-                        android:src="@drawable/ic_launcher_background"
                         app:srcCompat="@mipmap/ic_st" />
 
                     <TextView
