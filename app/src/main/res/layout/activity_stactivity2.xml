@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_launcher_background" />
+                    app:srcCompat="@mipmap/ic_st" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
