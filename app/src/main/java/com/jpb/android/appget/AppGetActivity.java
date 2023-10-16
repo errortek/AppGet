@@ -25,10 +25,10 @@ public class AppGetActivity extends AppCompatActivity {
     String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/version.txt" ;
     String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/description.txt" ;
     String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/changelog.txt" ;
-    TextView textView10;
-    TextView textView11;
-    TextView textView14;
-    TextView textView16;
+    TextView textView10e;
+    TextView textView11e;
+    TextView textView14e;
+    TextView textView16e;
     Toolbar toolbar;
     Button installbut;
     URL url ;
@@ -37,20 +37,20 @@ public class AppGetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stactivity2);
-        textView10 = this.findViewById(R.id.textView10);
-        textView11 = this.findViewById(R.id.textView11);
-        textView14 = this.findViewById(R.id.textView14);
-        textView16 = this.findViewById(R.id.textView16);
-        toolbar = this.findViewById(R.id.toolbar);
-        installbut = this.findViewById(R.id.button2);
+        setContentView(R.layout.activity_appget);
+        textView10e = this.findViewById(R.id.textView10e);
+        textView11e = this.findViewById(R.id.textView11e);
+        textView14e = this.findViewById(R.id.textView14e);
+        textView16e = this.findViewById(R.id.textView16e);
+        toolbar = this.findViewById(R.id.toolbar1);
+        installbut = this.findViewById(R.id.button4);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/app-release.apk");
+                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/app-debug.apk");
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setTitle("Unified ScratchTappy Platform");
+                request.setTitle("AppGet");
                 request.setDescription("Downloading");
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "AppGet.apk");
@@ -84,7 +84,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView11);
+                            TextView text = (TextView) findViewById(R.id.textView11e);
                             text.setText("Updated: " + bo.toString());
                             try {
                                 bo.close();
@@ -121,7 +121,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView10);
+                            TextView text = (TextView) findViewById(R.id.textView10e);
                             text.setText("Version: " + bo.toString());
                             try {
                                 bo.close();
@@ -158,7 +158,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView14);
+                            TextView text = (TextView) findViewById(R.id.textView14e);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
@@ -195,7 +195,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView16);
+                            TextView text = (TextView) findViewById(R.id.textView16e);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
@@ -232,7 +232,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView13);
+                            TextView text = (TextView) findViewById(R.id.textView13e);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
