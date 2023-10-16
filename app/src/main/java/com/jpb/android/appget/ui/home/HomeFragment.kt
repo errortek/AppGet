@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.card.MaterialCardView
 import com.jpb.android.appget.AppGetActivity
 import com.jpb.android.appget.STActivity2
 import com.jpb.android.appget.databinding.FragmentHomeBinding
@@ -33,22 +34,28 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val button: Button = binding.button
+        val button: MaterialCardView = binding.button
         button.setOnClickListener {
                 val intent = Intent(this@HomeFragment.requireContext(), STActivity2::class.java)
                 startActivity(intent)
         }
 
-        val button3: Button = binding.button3
+        val button3: MaterialCardView = binding.button3
         button3.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
             startActivity(intent)
         }
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val card: MaterialCardView = binding.card
+        card.setOnClickListener {
+            val intent = Intent(this@HomeFragment.requireContext(), STActivity2::class.java)
+            startActivity(intent)
         }
+
+        //val textView: TextView = binding.textHome
+        //homeViewModel.text.observe(viewLifecycleOwner) {
+        //    textView.text = it
+        //}
         return root
     }
 
