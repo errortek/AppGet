@@ -17,9 +17,13 @@
         android:theme="@style/Theme.AppGet"
         tools:targetApi="31">
         <activity
+            android:name=".SDKActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.AboutActivity" />
+        <activity
             android:name=".ui.DeviceInfo"
             android:exported="false"
-            android:parentActivityName=".ui.AboutActivity"/>
+            android:parentActivityName=".ui.AboutActivity" />
         <activity
             android:name=".ui.AboutActivity"
             android:exported="false"

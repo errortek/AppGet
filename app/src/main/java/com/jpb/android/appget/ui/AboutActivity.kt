@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jpb.android.appget.R
+import com.jpb.android.appget.SDKActivity
 
 class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,11 @@ class AboutActivity : AppCompatActivity() {
         val button: Button = findViewById(R.id.button7)
         button.setOnClickListener {
             val intent = Intent(applicationContext, DeviceInfo::class.java)
+            startActivity(intent)
+        }
+        val button2: Button = findViewById(R.id.button8)
+        button2.setOnClickListener {
+            val intent = Intent(applicationContext, SDKActivity::class.java)
             startActivity(intent)
         }
     }
