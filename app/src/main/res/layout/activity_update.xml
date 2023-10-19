@@ -19,7 +19,6 @@
                 android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="?attr/colorButtonNormal"
                 app:contentPadding="8dp">
 
                 <LinearLayout
@@ -73,11 +72,11 @@
                     android:textAllCaps="false" />
 
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="?attr/colorButtonNormal"
                 app:contentPadding="8dp">
 
                 <LinearLayout
