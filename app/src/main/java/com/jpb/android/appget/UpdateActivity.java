@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -55,6 +58,10 @@ public class UpdateActivity extends AppCompatActivity {
                                 int versionCode = packageInfo.versionCode;
                                 //TextView text = (TextView) findViewById(R.id.textView24);
                                 //text.setText(versionName + "->" + bo.toString());
+                                MaterialCardView cardView = findViewById(R.id.card);
+                                if (String.valueOf(versionCode).equals(bo.toString())) {
+                                    cardView.setVisibility(View.GONE);
+                                }
 
 
                             } catch (PackageManager.NameNotFoundException e) {
