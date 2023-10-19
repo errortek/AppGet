@@ -39,7 +39,7 @@ class NotificationsFragment : Fragment() {
             startActivity(intent)
         }
         val button2: MaterialCardView = binding.aboutbutton
-        button.setOnClickListener {
+        button2.setOnClickListener {
             val intent = Intent(this@NotificationsFragment.requireContext(), AboutActivity::class.java)
             startActivity(intent)
         }
