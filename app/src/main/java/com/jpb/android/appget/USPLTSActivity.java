@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class STActivity2 extends AppCompatActivity {
+public class USPLTSActivity extends AppCompatActivity {
 
     String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt" ;
     String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt" ;
@@ -52,10 +52,10 @@ public class STActivity2 extends AppCompatActivity {
                 Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/app-release.apk");
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setTitle("ScratchTappy");
+                request.setTitle("Unified ScratchTappy Platform");
                 request.setDescription("Downloading");
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "ST.apk");
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "USP.apk");
                 downloadmanager.enqueue(request);
             };
         });

@@ -17,6 +17,12 @@
         android:theme="@style/Theme.AppGet"
         tools:targetApi="31">
         <activity
+            android:name=".USPLTSActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppGet.NoActionBar"
+            android:label=""/>
+        <activity
             android:name=".SDKActivity"
             android:exported="false"
             android:parentActivityName=".ui.AboutActivity" />
@@ -44,7 +50,11 @@
             android:label=""
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppGet.NoActionBar" />
-        <activity android:name=".oss.license.OSSLicense" android:exported="false" android:label="Open Source Licenses" android:theme="@style/Theme.AppGet.NoActionBar"/>
+        <activity
+            android:name=".oss.license.OSSLicense"
+            android:exported="false"
+            android:label="Open Source Licenses"
+            android:theme="@style/Theme.AppGet.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

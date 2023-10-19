@@ -113,7 +113,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:lines="4"
-                        android:text="Unified ScratchTappy Platform" />
+                        android:text="ScratchTappy" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
