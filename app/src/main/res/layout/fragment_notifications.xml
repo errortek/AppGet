@@ -21,7 +21,6 @@
                 android:id="@+id/imageView2"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:src="@tools:sample/avatars"
                 app:srcCompat="@drawable/baseline_account_circle_24" />
 
             <View
@@ -81,7 +80,6 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:src="@tools:sample/avatars"
                         app:srcCompat="@drawable/baseline_system_update_alt_24" />
 
                     <TextView
@@ -125,7 +123,6 @@
                             android:id="@+id/imageView4"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@tools:sample/avatars"
                             app:srcCompat="@mipmap/ic_launcher" />
 
                         <View
