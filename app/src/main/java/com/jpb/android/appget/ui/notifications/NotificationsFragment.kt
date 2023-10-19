@@ -33,11 +33,11 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val button: MaterialCardView = binding.updatebutton
-        //button.setOnClickListener {
+        val button: MaterialCardView = binding.updatebutton
+        button.setOnClickListener {
         //    val intent = Intent(this@NotificationsFragment.requireContext(), UpdateActivity::class.java)
         //    startActivity(intent)
-        //}
+        }
         val button2: MaterialCardView = binding.aboutbutton
         button2.setOnClickListener {
             val intent = Intent(this@NotificationsFragment.requireContext(), AboutActivity::class.java)
