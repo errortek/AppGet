@@ -23,10 +23,10 @@ import java.net.URL;
 
 public class USPLTSActivity extends AppCompatActivity {
 
-    String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt" ;
-    String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt" ;
-    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt" ;
-    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt" ;
+    String TextFileURL = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-updated_date.txt" ;
+    String TextFileURL2 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-version.txt" ;
+    String TextFileURL3 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-description.txt" ;
+    String TextFileURL4 = "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-changelog.txt" ;
     TextView textView10;
     TextView textView11;
     TextView textView14;
@@ -39,7 +39,7 @@ public class USPLTSActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stactivity2);
+        setContentView(R.layout.activity_uspltsactivity);
         textView10 = this.findViewById(R.id.textView10);
         textView11 = this.findViewById(R.id.textView11);
         textView14 = this.findViewById(R.id.textView14);
@@ -49,7 +49,7 @@ public class USPLTSActivity extends AppCompatActivity {
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/app-release.apk");
+                Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-app-release.apk");
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
                 request.setTitle("Unified ScratchTappy Platform");
@@ -70,7 +70,7 @@ public class USPLTSActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/updated_date.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-updated_date.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -107,7 +107,7 @@ public class USPLTSActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-version.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -144,7 +144,7 @@ public class USPLTSActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/description.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-description.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -181,7 +181,7 @@ public class USPLTSActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-changelog.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
@@ -218,7 +218,7 @@ public class USPLTSActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/changelog.txt";
+                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/9.x-changelog.txt";
                 URL u = null;
                 try {
                     u = new URL(path);
