@@ -52,7 +52,7 @@ public class SDKActivity extends AppCompatActivity {
             }
         });
         title4.setText("Kotlin version");
-        desc4.setText("1.8.10");
+        desc4.setText("1.9.10");
         card4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

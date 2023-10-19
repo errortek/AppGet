@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jpb.android.appget.R
 import com.jpb.android.appget.SDKActivity
+import com.jpb.android.appget.oss.license.OSSLicense
 
 class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,11 @@ class AboutActivity : AppCompatActivity() {
         val button2: Button = findViewById(R.id.button8)
         button2.setOnClickListener {
             val intent = Intent(applicationContext, SDKActivity::class.java)
+            startActivity(intent)
+        }
+        val button3: Button = findViewById(R.id.button6)
+        button3.setOnClickListener {
+            val intent = Intent(applicationContext, OSSLicense::class.java)
             startActivity(intent)
         }
     }

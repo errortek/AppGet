@@ -44,6 +44,7 @@
             android:label=""
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppGet.NoActionBar" />
+        <activity android:name=".oss.license.OSSLicense" android:exported="false" android:label="Open Source Licenses" android:theme="@style/Theme.AppGet.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
