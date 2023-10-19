@@ -45,7 +45,7 @@ public class USPLTSActivity extends AppCompatActivity {
         textView14 = this.findViewById(R.id.textView14);
         textView16 = this.findViewById(R.id.textView16);
         toolbar = this.findViewById(R.id.toolbar);
-        installbut = this.findViewById(R.id.button2);
+        installbut = this.findViewById(R.id.button9);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
