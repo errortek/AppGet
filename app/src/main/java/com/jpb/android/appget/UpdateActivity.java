@@ -14,15 +14,33 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class UpdateActivity extends AppCompatActivity {
 
+    private int onlineVersionCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        readVersion();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-        readVersion();
+        MaterialCardView cardView = findViewById(R.id.cardU);
+        PackageManager packageManager = getPackageManager();
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Retrieve the version information
+        String versionName = packageInfo.versionName;
+        int versionCode = packageInfo.versionCode;
+        if (versionCode == onlineVersionCode) {
+            cardView.setVisibility(View.GONE);
+        }
     }
     private void readVersion() {
 
@@ -41,7 +59,6 @@ public class UpdateActivity extends AppCompatActivity {
                     byte[] buffer = new byte[1024];
                     in.read(buffer); // Read from Buffer.
                     bo.write(buffer); // Write Into Buffer.
-
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -56,12 +73,9 @@ public class UpdateActivity extends AppCompatActivity {
                                 // Retrieve the version information
                                 String versionName = packageInfo.versionName;
                                 int versionCode = packageInfo.versionCode;
-                                //TextView text = (TextView) findViewById(R.id.textView24);
-                                //text.setText(versionName + "->" + bo.toString());
-                                MaterialCardView cardView = findViewById(R.id.card);
-                                if (String.valueOf(versionCode).equals(bo.toString())) {
-                                    cardView.setVisibility(View.GONE);
-                                }
+                                TextView text = (TextView) findViewById(R.id.textView24);
+                                text.setText(versionName + "->" + bo.toString());
+                                onlineVersionCode = Integer.valueOf(bo.size());
 
 
                             } catch (PackageManager.NameNotFoundException e) {
@@ -78,7 +92,6 @@ public class UpdateActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }.start();
     }
