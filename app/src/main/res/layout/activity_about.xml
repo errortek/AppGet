@@ -32,43 +32,30 @@
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="by jpb/jpbandroid/ErrorTek"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
             <Button
                 android:id="@+id/button6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Open Source Licenses" />
 
-            <com.google.android.material.tabs.TabLayout
+            <Button
+                android:id="@+id/button7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:text="Device" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Device">
-                </com.google.android.material.tabs.TabItem>
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SDKs" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SDKs">
-                </com.google.android.material.tabs.TabItem>
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dependencies" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dependencies">
-                </com.google.android.material.tabs.TabItem>
-            </com.google.android.material.tabs.TabLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
