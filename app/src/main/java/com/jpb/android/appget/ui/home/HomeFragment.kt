@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
 import com.jpb.android.appget.AppGetActivity
+import com.jpb.android.appget.LCActivity
 import com.jpb.android.appget.NotesActivity
 import com.jpb.android.appget.STActivity2
 import com.jpb.android.appget.USPLTSActivity
@@ -57,6 +58,12 @@ class HomeFragment : Fragment() {
         val card: MaterialCardView = binding.card
         card.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), STActivity2::class.java)
+            startActivity(intent)
+        }
+
+        val card2: MaterialCardView = binding.card2
+        card2.setOnClickListener {
+            val intent = Intent(this@HomeFragment.requireContext(), LCActivity::class.java)
             startActivity(intent)
         }
 

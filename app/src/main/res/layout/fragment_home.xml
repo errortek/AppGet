@@ -143,6 +143,33 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card2"
+                android:layout_width="84dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="?attr/colorButtonNormal"
+                app:contentPadding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        app:srcCompat="@drawable/icon" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="3"
+                        android:text="LibChecker" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
