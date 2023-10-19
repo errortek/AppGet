@@ -37,7 +37,8 @@
         <activity
             android:name=".UpdateActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="Updates"/>
         <activity
             android:name=".STActivity2"
             android:exported="false"
