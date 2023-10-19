@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
 import com.jpb.android.appget.AppGetActivity
+import com.jpb.android.appget.NotesActivity
 import com.jpb.android.appget.STActivity2
 import com.jpb.android.appget.USPLTSActivity
 import com.jpb.android.appget.databinding.FragmentHomeBinding
@@ -44,6 +45,12 @@ class HomeFragment : Fragment() {
         val button3: MaterialCardView = binding.button3
         button3.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button100: MaterialCardView = binding.button100
+        button100.setOnClickListener {
+            val intent = Intent(this@HomeFragment.requireContext(), NotesActivity::class.java)
             startActivity(intent)
         }
 
