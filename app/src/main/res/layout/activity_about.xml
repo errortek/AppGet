@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="AppGet 1.1"
+                android:text="AppGet 2.0"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 

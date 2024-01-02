@@ -22,7 +22,7 @@ public class SDKActivity extends AppCompatActivity {
         MaterialCardView card = findViewById(R.id.card8);
         MaterialCardView card2 = findViewById(R.id.card9);
         title.setText("Gradle version");
-        desc.setText("8.4");
+        desc.setText("8.6 RC1");
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class SDKActivity extends AppCompatActivity {
             }
         });
         title2.setText("Android Gradle Plugin version");
-        desc2.setText("8.1.2");
+        desc2.setText("8.2.0");
         card2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +44,7 @@ public class SDKActivity extends AppCompatActivity {
         MaterialCardView card3 = findViewById(R.id.card10);
         MaterialCardView card4 = findViewById(R.id.card11);
         title3.setText("Jetpack Compose version");
-        desc3.setText("1.6.0 alpha 8");
+        desc3.setText("1.6.0 beta 3");
         card3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
