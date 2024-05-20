@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.jpb.android.appget"
         minSdk 22
-        targetSdk 34
+        targetSdk 35
         versionCode 20
         versionName "2.0"
 
