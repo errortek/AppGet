@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +20,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppGet"
         tools:targetApi="31">
+        <activity
+            android:name=".WritingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sysinfoToolsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".utilsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".zbApps"
+            android:exported="false" />
+        <activity
+            android:name=".jpbApps"
+            android:exported="false" />
+        <activity
+            android:name=".LCActivity"
+            android:exported="false"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppGet.NoActionBar" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppGet.NoActionBar" />
+        <activity
+            android:name=".USPLTSActivity"
+            android:exported="false"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppGet.NoActionBar" />
+        <activity
+            android:name=".SDKActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.AboutActivity" />
+        <activity
+            android:name=".ui.DeviceInfo"
+            android:exported="false"
+            android:parentActivityName=".ui.AboutActivity" />
+        <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false"
+            android:label="Updates"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".STActivity2"
             android:exported="false"
@@ -28,6 +89,11 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppGet.NoActionBar" />
         <activity
+            android:name=".oss.license.OSSLicense"
+            android:exported="false"
+            android:label="Open Source Licenses"
+            android:theme="@style/Theme.AppGet.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
@@ -37,6 +103,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"

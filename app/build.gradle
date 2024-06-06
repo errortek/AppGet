@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 
 android {
     namespace 'com.jpb.android.appget'
@@ -11,8 +12,8 @@ android {
         applicationId "com.jpb.android.appget"
         minSdk 22
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 20
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

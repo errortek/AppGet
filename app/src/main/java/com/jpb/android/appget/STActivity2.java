@@ -52,10 +52,10 @@ public class STActivity2 extends AppCompatActivity {
                 Uri uri = Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/app-release.apk");
 
                 DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setTitle("Unified ScratchTappy Platform");
+                request.setTitle("ScratchTappy");
                 request.setDescription("Downloading");
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "USP.apk");
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "ST.apk");
                 downloadmanager.enqueue(request);
             };
         });
