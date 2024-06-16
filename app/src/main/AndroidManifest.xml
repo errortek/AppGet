@@ -57,14 +57,6 @@
             android:label=""
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".SDKActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.AboutActivity" />
-        <activity
-            android:name=".ui.DeviceInfo"
-            android:exported="false"
-            android:parentActivityName=".ui.AboutActivity" />
-        <activity
             android:name=".ui.AboutActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
