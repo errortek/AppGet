@@ -21,16 +21,6 @@ class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
-        val button: Button = findViewById(R.id.button7)
-        button.setOnClickListener {
-            val intent = Intent(applicationContext, DeviceInfo::class.java)
-            startActivity(intent)
-        }
-        val button2: Button = findViewById(R.id.button8)
-        button2.setOnClickListener {
-            val intent = Intent(applicationContext, SDKActivity::class.java)
-            startActivity(intent)
-        }
         val button3: Button = findViewById(R.id.button6)
         button3.setOnClickListener {
             val intent = Intent(applicationContext, OSSLicense::class.java)
