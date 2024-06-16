@@ -31,7 +31,6 @@ public class USPLTSActivity extends AppCompatActivity {
     TextView textView11;
     TextView textView14;
     TextView textView16;
-    Toolbar toolbar;
     Button installbut;
     URL url ;
     String TextHolder = "" , TextHolder2 = "", TextHolder3 = "", TextHolder4 = "", TextHolder5 = "";
@@ -44,7 +43,6 @@ public class USPLTSActivity extends AppCompatActivity {
         textView11 = this.findViewById(R.id.textView11);
         textView14 = this.findViewById(R.id.textView14);
         textView16 = this.findViewById(R.id.textView16);
-        toolbar = this.findViewById(R.id.toolbar);
         installbut = this.findViewById(R.id.button9);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -59,7 +57,6 @@ public class USPLTSActivity extends AppCompatActivity {
                 downloadmanager.enqueue(request);
             };
         });
-        setSupportActionBar(toolbar);
         readUpdateDate();
         readVersion();
         readDescription();

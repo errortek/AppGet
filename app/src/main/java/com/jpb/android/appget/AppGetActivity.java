@@ -42,7 +42,6 @@ public class AppGetActivity extends AppCompatActivity {
         textView11e = this.findViewById(R.id.textView11e);
         textView14e = this.findViewById(R.id.textView14e);
         textView16e = this.findViewById(R.id.textView16e);
-        toolbar = this.findViewById(R.id.toolbar1);
         installbut = this.findViewById(R.id.button4);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -57,7 +56,6 @@ public class AppGetActivity extends AppCompatActivity {
                 downloadmanager.enqueue(request);
             };
         });
-        setSupportActionBar(toolbar);
         readUpdateDate();
         readVersion();
         readDescription();
