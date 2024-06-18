@@ -117,9 +117,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
-                android:layout_width="84dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?attr/colorButtonNormal"
                 app:contentPadding="8dp">
@@ -136,7 +137,7 @@
                         app:srcCompat="@mipmap/ic_st" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="4"
                         android:text="ScratchTappy" />
@@ -146,7 +147,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card2"
-                android:layout_width="84dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:backgroundTint="?attr/colorButtonNormal"
                 app:contentPadding="8dp">
@@ -163,7 +164,7 @@
                         app:srcCompat="@drawable/icon" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="3"
                         android:text="LibChecker" />
