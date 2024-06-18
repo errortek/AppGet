@@ -2,6 +2,7 @@ package com.jpb.android.appget;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.chip.Chip;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -29,6 +32,8 @@ public class AppGetActivity extends AppCompatActivity {
     TextView textView11e;
     TextView textView14e;
     TextView textView16e;
+    Chip chip3;
+    Chip chip4;
     Toolbar toolbar;
     Button installbut;
     URL url ;
@@ -42,6 +47,8 @@ public class AppGetActivity extends AppCompatActivity {
         textView11e = this.findViewById(R.id.textView11e);
         textView14e = this.findViewById(R.id.textView14e);
         textView16e = this.findViewById(R.id.textView16e);
+        chip3 = this.findViewById(R.id.chip3);
+        chip4 = this.findViewById(R.id.chip4);
         installbut = this.findViewById(R.id.button4);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -60,7 +67,19 @@ public class AppGetActivity extends AppCompatActivity {
         readVersion();
         readDescription();
         readChangelog();
-    }
+        chip3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AppStoreActivity.class);
+                startActivity(intent);
+            }
+        });
+        chip4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), utilsActivity.class);
+                startActivity(intent);
+            }
+        });
+        }
 
     private void readUpdateDate() {
         new Thread() {
