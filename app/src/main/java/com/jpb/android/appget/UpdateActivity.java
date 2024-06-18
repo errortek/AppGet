@@ -29,15 +29,15 @@ public class UpdateActivity extends AppCompatActivity {
         MaterialCardView cardView = findViewById(R.id.cardU);
         PackageManager packageManager = getPackageManager();
         PackageInfo packageInfo = null;
-        try {
-            packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", 0);
+//        } catch (PackageManager.NameNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
 
         // Retrieve the version information
-        String versionName = packageInfo.versionName;
-        int versionCode = packageInfo.versionCode;
+        String versionName = "10";
+        int versionCode = 10000;
         if (versionCode == onlineVersionCode) {
             cardView.setVisibility(View.GONE);
         }

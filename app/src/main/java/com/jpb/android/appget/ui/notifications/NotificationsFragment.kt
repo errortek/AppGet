@@ -35,8 +35,8 @@ class NotificationsFragment : Fragment() {
 
         val button: MaterialCardView = binding.updatebutton
         button.setOnClickListener {
-        //    val intent = Intent(this@NotificationsFragment.requireContext(), UpdateActivity::class.java)
-        //    startActivity(intent)
+            val intent = Intent(this@NotificationsFragment.requireContext(), UpdateActivity::class.java)
+            startActivity(intent)
         }
         val button2: MaterialCardView = binding.aboutbutton
         button2.setOnClickListener {
