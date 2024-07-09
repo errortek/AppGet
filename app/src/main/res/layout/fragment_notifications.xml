@@ -139,13 +139,13 @@
                                 android:id="@+id/textView21"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="AppGet 2.0" />
+                                android:text="AppGet 2.5" />
 
                             <TextView
                                 android:id="@+id/textView22"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Gradle 8.6 RC1/AGP 8.2.0" />
+                                android:text="Gradle 8.8/AGP 8.5.0" />
                         </LinearLayout>
 
                     </LinearLayout>
