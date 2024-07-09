@@ -1,6 +1,7 @@
 # AppGet
 jpbROM's app store; can also be installed on devices that don't run jpbROM through the APK in the Releases page
 ## License
+```
 Copyright 2023-24 jpbandroid/ErrorTek
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,3 +15,5 @@ Copyright 2023-24 jpbandroid/ErrorTek
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+```
+
