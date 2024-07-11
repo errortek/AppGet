@@ -1,131 +1,112 @@
-package com.jpb.android.appget;
+package com.jpb.android.appget
 
-import static android.view.View.GONE;
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.os.Bundle
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.card.MaterialCardView
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
 
-import androidx.appcompat.app.AppCompatActivity;
+class UpdateActivity : AppCompatActivity() {
+    private var onlineVersionCode = 0
 
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        readVersion()
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_update)
 
-import com.google.android.material.card.MaterialCardView;
+        val cardView = findViewById<MaterialCardView>(R.id.cardU)
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class UpdateActivity extends AppCompatActivity {
-
-    private int onlineVersionCode;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        readVersion();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
-
-        MaterialCardView cardView = findViewById(R.id.cardU);
-
-        String your_apppackagename = "com.jpb.scratchtappy";
-        PackageManager packageManager = getPackageManager();
-        ApplicationInfo applicationInfo = null;
-        int versionCode;
-        versionCode = 1;
+        val your_apppackagename = "com.jpb.scratchtappy"
+        val packageManager = packageManager
+        var applicationInfo: ApplicationInfo? = null
+        var versionCode: Int
+        versionCode = 1
         try {
-            applicationInfo = packageManager.getApplicationInfo(your_apppackagename, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            applicationInfo = packageManager.getApplicationInfo(your_apppackagename, 0)
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
         }
         if (applicationInfo == null) {
             // not installed it will open your app directly on playstore
-            versionCode = 1;
+            versionCode = 1
         } else {
             // Installed
-            PackageInfo AppInfo = null;
+            var AppInfo: PackageInfo? = null
             try {
-                AppInfo = packageManager.getPackageInfo(your_apppackagename, 0);
-            } catch (PackageManager.NameNotFoundException e) {
+                AppInfo = packageManager.getPackageInfo(your_apppackagename, 0)
+            } catch (e: PackageManager.NameNotFoundException) {
                 //throw new RuntimeException(e);
             }
-            versionCode = AppInfo.versionCode;
+            versionCode = AppInfo!!.versionCode
             if (versionCode > onlineVersionCode) {
-                cardView.setVisibility(GONE);
+                cardView.visibility = View.GONE
             }
         }
     }
-    private void readVersion() {
 
-        new Thread() {
-            @Override
-            public void run() {
-                String path ="https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version_int.txt";
-                URL u = null;
+    private fun readVersion() {
+        object : Thread() {
+            override fun run() {
+                val path =
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/USP/version_int.txt"
+                var u: URL? = null
                 try {
-                    u = new URL(path);
-                    HttpURLConnection c = (HttpURLConnection) u.openConnection();
-                    c.setRequestMethod("GET");
-                    c.connect();
-                    InputStream in = c.getInputStream();
-                    final ByteArrayOutputStream bo = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[1024];
-                    in.read(buffer); // Read from Buffer.
-                    bo.write(buffer); // Write Into Buffer.
-                    runOnUiThread(new Runnable() {
+                    u = URL(path)
+                    val c = u.openConnection() as HttpURLConnection
+                    c.requestMethod = "GET"
+                    c.connect()
+                    val `in` = c.inputStream
+                    val bo = ByteArrayOutputStream()
+                    val buffer = ByteArray(1024)
+                    `in`.read(buffer) // Read from Buffer.
+                    bo.write(buffer) // Write Into Buffer.
+                    runOnUiThread { // Get the package manager instance
+                        val packageManager = packageManager
 
-                        @Override
-                        public void run() {
-                            // Get the package manager instance
-                            PackageManager packageManager = getPackageManager();
+                        try {
+                            // Get the package information
+                            val packageInfo =
+                                packageManager.getPackageInfo("com.jpb.scratchtappy", 0)
 
-                            try {
-                                // Get the package information
-                                PackageInfo packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", 0);
-
-                                // Retrieve the version information
-                                String versionName = packageInfo.versionName;
-                                int versionCode = packageInfo.versionCode;
-                                TextView text = (TextView) findViewById(R.id.textView24);
-                                text.setText(versionName + "->" + bo.toString());
-                                onlineVersionCode = Integer.valueOf(bo.size());
-
-
-                            } catch (PackageManager.NameNotFoundException e) {
-                                e.printStackTrace();
-                                TextView text = (TextView) findViewById(R.id.textView24);
-                                text.setText( "e ->" + bo.toString());
-                            }
-                            try {
-                                bo.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            // Retrieve the version information
+                            val versionName = packageInfo.versionName
+                            val versionCode = packageInfo.versionCode
+                            val text = findViewById<View>(R.id.textView24) as TextView
+                            text.text = "$versionName->$bo"
+                            onlineVersionCode = bo.size()
+                        } catch (e: PackageManager.NameNotFoundException) {
+                            e.printStackTrace()
+                            val text = findViewById<View>(R.id.textView24) as TextView
+                            text.text = "e ->$bo"
                         }
-                    });
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        try {
+                            bo.close()
+                        } catch (e: IOException) {
+                            e.printStackTrace()
+                        }
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
                 }
             }
-        }.start();
+        }.start()
     }
 
-    private boolean appInstalledOrNot(String uri) {
-        PackageManager pm = getPackageManager();
+    private fun appInstalledOrNot(uri: String): Boolean {
+        val pm = packageManager
         try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
         }
 
-        return false;
+        return false
     }
 }
