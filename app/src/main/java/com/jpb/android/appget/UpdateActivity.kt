@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import androidx.core.content.pm.PackageInfoCompat
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.net.HttpURLConnection
@@ -30,9 +32,14 @@ class UpdateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
         val appgeticon = findViewById<ImageView>(R.id.appgeticon)
-        drawable_appget = appgeticon.drawable
-        appgeticon.load(R.mipmap.ic_launcher) {
-        transformations(CircleCropTransformation())
+        val appget_update = findViewById<Button>(R.id.button6)
+        val appget_progress = findViewById<CircularProgressIndicator>(R.id.appget_progress)
+        appget_update.setOnClickListener{
+            appget_progress.visibility = View.VISIBLE
+            appgeticon.load(R.mipmap.ic_launcher) {
+                    transformations(CircleCropTransformation())
+            }
+            appget_update.text = "Cancel"
         }
         try {
             val packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", PackageManager.GET_META_DATA)
