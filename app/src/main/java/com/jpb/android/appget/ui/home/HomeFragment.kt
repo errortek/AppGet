@@ -37,12 +37,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val button: MaterialCardView = binding.button
-        button.setOnClickListener {
-                val intent = Intent(this@HomeFragment.requireContext(), USPLTSActivity::class.java)
-                startActivity(intent)
-        }
-
         val button3: MaterialCardView = binding.button3
         button3.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
