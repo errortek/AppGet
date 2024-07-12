@@ -3,10 +3,16 @@ package com.jpb.android.appget
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.pm.PackageInfoCompat
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.google.android.material.card.MaterialCardView
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -14,28 +20,34 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class UpdateActivity : AppCompatActivity() {
-    private var onlineVersionCode = 0
-    var versionCode = 1
+    var onlineVersionCode = 0
+    var versionCode = 0
+    var drawable_appget : Drawable? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         readVersion()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
+        val appgeticon = findViewById<ImageView>(R.id.appgeticon)
+        drawable_appget = appgeticon.drawable
+        appgeticon.load(R.mipmap.ic_launcher) {
+        transformations(CircleCropTransformation())
+        }
         try {
-            val packageInfo =
-                packageManager.getPackageInfo("com.jpb.scratchtappy", 0)
-
+            val packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", PackageManager.GET_META_DATA)
             // Retrieve the version information
-            versionCode = packageInfo.versionCode
+            versionCode = PackageInfoCompat.getLongVersionCode(packageInfo).toInt()
         } catch (e: PackageManager.NameNotFoundException) {
+            val cardView = findViewById<MaterialCardView>(R.id.cardU)
+            cardView.visibility = View.GONE
             e.printStackTrace()
         }
         val cardView = findViewById<MaterialCardView>(R.id.cardU)
-            if (versionCode < onlineVersionCode) {
-                cardView.visibility = View.GONE
-            }
+        if (versionCode > onlineVersionCode) {
+           cardView.visibility = View.GONE
         }
+    }
 
 
     private fun readVersion() {
@@ -71,7 +83,7 @@ class UpdateActivity : AppCompatActivity() {
                             } catch (e: PackageManager.NameNotFoundException) {
                                 e.printStackTrace()
                                 val text = findViewById<View>(R.id.textView24) as TextView
-                                text.text = "e ->$bo"
+                                //text.text = "e ->$bo"
                             }
                             try {
                                 bo.close()
