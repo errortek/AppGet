@@ -28,8 +28,8 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v2-$(date +%Y%m%d.%H%M%S)"
+          automatic_release_tag: "v2-${{ github.event.repository.updated_at}}"
           prerelease: true
-          title: "v2-$(date +%Y%m%d.%H%M%S) (dev)"
+          title: "v2-${{ github.event.repository.updated_at}} (dev)"
           files: |
             *.apk
