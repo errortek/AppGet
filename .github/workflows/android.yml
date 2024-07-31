@@ -26,12 +26,16 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Get current date
+      id: date
+      run: |
+          echo "{date}={$(date +'%Y-%m-%d-%H%M%S')}" >> $GITHUB_STATE
     - name: Release
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v2-${{ github.event.repository.updated_at}}"
+          automatic_release_tag: "v2-${{env.date}}"
           prerelease: true
-          title: "v2-${{ github.event.repository.updated_at}} (dev)"
+          title: "v2-${{env.date}} (dev)"
           files: |
             *.apk
