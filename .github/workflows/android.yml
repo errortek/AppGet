@@ -32,5 +32,4 @@ jobs:
           prerelease: true
           title: "v2-$(date +%Y%m%d.%H%M%S) (dev)"
           files: |
-            LICENSE.txt
-            *.jar
+            *.apk
