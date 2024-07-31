@@ -9,7 +9,9 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestRelease
+    permissions: write-all
+
 
     steps:
     - uses: actions/checkout@v4
