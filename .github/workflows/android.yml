@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latestRelease
+    runs-on: ubuntu-latest
     permissions: write-all
 
 
