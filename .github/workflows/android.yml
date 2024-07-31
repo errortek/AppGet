@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: set up JDK 11
+    - name: set up JDK
       uses: actions/setup-java@v4
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
         cache: gradle
 
@@ -45,7 +45,7 @@ jobs:
         GH_REPO: ${{ github.repository }}
       run: |
         tag="${{ steps.tag.outputs.tag }}"
-        body="ruby/ruby@${{ needs.prepare.outputs.commit }}"
+        body=""
         gh release create --draft "$tag" --title "$tag" --notes "$body"
 
   publish:
