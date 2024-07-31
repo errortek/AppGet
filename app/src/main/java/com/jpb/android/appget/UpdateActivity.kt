@@ -82,15 +82,14 @@ class UpdateActivity : AppCompatActivity() {
                                     packageManager.getPackageInfo("com.jpb.scratchtappy", 0)
 
                                 // Retrieve the version information
-                                val versionName = packageInfo.versionName
                                 val versionCode = packageInfo.versionCode
                                 val text = findViewById<View>(R.id.textView24) as TextView
-                                text.text = "$versionName->$bo"
+                                text.text = "$bo"
                                 onlineVersionCode = bo.size()
                             } catch (e: PackageManager.NameNotFoundException) {
                                 e.printStackTrace()
                                 val text = findViewById<View>(R.id.textView24) as TextView
-                                //text.text = "e ->$bo"
+                                //text.text = "$bo"
                             }
                             try {
                                 bo.close()
