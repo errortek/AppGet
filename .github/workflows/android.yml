@@ -24,43 +24,13 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-  release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ steps.tag.outputs.tag }}
-    steps:
-    - uses: actions/checkout@v4
+    - name: Release
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        fetch-depth: 0
-      if: github.event_name != 'push'
-
-    - name: Set tag name
-      id: tag
-      run: |
-          tag=v2-$(date +%Y%m%d.%H%M%S)
-    - name: Create Release
-      env:
-        GH_TOKEN: ${{ github.token }}
-        GH_REPO: ${{ github.repository }}
-      run: |
-        tag="v2-$(date +%Y%m%d.%H%M%S)"
-        body=""
-        gh release create --draft "$tag" --title "$tag" --notes "$body"
-
-  publish:
-    name: Publish Release
-    needs: [release, build]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Publish Release
-      env:
-        GH_TOKEN: ${{ github.token }}
-        GH_REPO: ${{ github.repository }}
-      run: gh release edit "${{ needs.release.outputs.tag }}" --draft=false
-    - uses: eregon/keep-last-n-releases@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        n: 3
-        remove_tags_without_release: true
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "v2-$(date +%Y%m%d.%H%M%S)"
+          prerelease: true
+          title: "v2-$(date +%Y%m%d.%H%M%S) (dev)"
+          files: |
+            LICENSE.txt
+            *.jar
