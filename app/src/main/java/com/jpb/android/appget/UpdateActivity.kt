@@ -35,11 +35,17 @@ class UpdateActivity : AppCompatActivity() {
         val appget_update = findViewById<Button>(R.id.button6)
         val appget_progress = findViewById<CircularProgressIndicator>(R.id.appget_progress)
         appget_update.setOnClickListener{
+        if (appget_update.text != "Cancel") {
             appget_progress.visibility = View.VISIBLE
             appgeticon.load(R.mipmap.ic_launcher) {
                     transformations(CircleCropTransformation())
             }
             appget_update.text = "Cancel"
+            } else {
+              appget_progress.visibility = View.GONE
+              appgeticon.load(R.mipmap.ic_launcher)
+              appget_update.text = "Install"
+            }
         }
         try {
             val packageInfo = packageManager.getPackageInfo("com.jpb.scratchtappy", PackageManager.GET_META_DATA)
