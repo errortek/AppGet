@@ -35,6 +35,7 @@ jobs:
       id: date
       run: | 
        echo ${{ github.event.repository.updated_at}} | sed 's/:/./g' | sed 's/T/-/g' | sed 's/Z/-nightly/g'
+       echo "{date}={${{ github.event.repository.updated_at}} | sed 's/:/./g' | sed 's/T/-/g' | sed 's/Z/-nightly/g'}" >> $GITHUB_OUTPUT
     - name: Test with environment variables
       run: echo $TAG_NAME - $RELEASE_NAME
       env:
