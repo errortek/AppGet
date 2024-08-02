@@ -63,7 +63,7 @@ aboutLibraries {
     // For non Android projects, execute `exportLibraryDefinitions`
     strictMode = com.mikepenz.aboutlibraries.plugin.StrictMode.WARN
     // Allowed set of licenses, this project will be able to use without build failure
-    allowedLicenses = ["Apache-2.0", "asdkl", "mit"]
+    // allowedLicenses = ["Apache-2.0", "asdkl", "mit"]
     // Enable the duplication mode, allows to merge, or link dependencies which relate
     duplicationMode = com.mikepenz.aboutlibraries.plugin.DuplicateMode.LINK
     // Configure the duplication rule, to match "duplicates" with
