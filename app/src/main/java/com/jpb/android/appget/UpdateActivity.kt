@@ -37,13 +37,13 @@ class UpdateActivity : AppCompatActivity() {
         appget_update.setOnClickListener{
         if (appget_update.text != "Cancel") {
             appget_progress.visibility = View.VISIBLE
-            appgeticon.load(R.mipmap.ic_launcher) {
+            appgeticon.load(Drawable.asImage(R.mipmap.ic_launcher)) {
                     transformations(CircleCropTransformation())
             }
             appget_update.text = "Cancel"
             } else {
               appget_progress.visibility = View.GONE
-              appgeticon.load(R.mipmap.ic_launcher)
+              appgeticon.load(Drawable.asImage(R.mipmap.ic_launcher))
               appget_update.text = "Install"
             }
         }
