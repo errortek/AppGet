@@ -12,8 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
-import coil3.load
-import coil3.transform.CircleCropTransformation
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import java.io.ByteArrayOutputStream
@@ -37,13 +37,13 @@ class UpdateActivity : AppCompatActivity() {
         appget_update.setOnClickListener{
         if (appget_update.text != "Cancel") {
             appget_progress.visibility = View.VISIBLE
-            appgeticon.load(Drawable.asImage(R.mipmap.ic_launcher)) {
+            appgeticon.load(R.mipmap.ic_launcher) {
                     transformations(CircleCropTransformation())
             }
             appget_update.text = "Cancel"
             } else {
               appget_progress.visibility = View.GONE
-              appgeticon.load(Drawable.asImage(R.mipmap.ic_launcher))
+              appgeticon.load(R.mipmap.ic_launcher)
               appget_update.text = "Install"
             }
         }
