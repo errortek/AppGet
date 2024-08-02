@@ -12,8 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
-import coil.load
-import coil.transform.CircleCropTransformation
+import coil3.load
+import coil3.transform.CircleCropTransformation
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import java.io.ByteArrayOutputStream
