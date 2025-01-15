@@ -5,11 +5,11 @@ plugins {
 apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 
 android {
-    namespace 'com.jpb.android.appget'
+    namespace 'com.jpb.appget.lite'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.jpb.android.appget"
+        applicationId "com.jpb.appget.lite"
         minSdk 22
         targetSdk 35
         versionCode 30

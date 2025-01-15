@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.jpb.android.appget",
+  "applicationId": "com.jpb.appget.lite",
   "variantName": "release",
   "elements": [
     {

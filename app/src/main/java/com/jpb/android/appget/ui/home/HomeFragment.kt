@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.home
+package com.jpb.appget.lite.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
-import com.jpb.android.appget.AppDetailsActivity
-import com.jpb.android.appget.databinding.FragmentHomeBinding
+import com.jpb.appget.lite.AppDetailsActivity
+import com.jpb.appget.lite.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {

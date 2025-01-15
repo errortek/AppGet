@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.dashboard
+package com.jpb.appget.lite.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.jpb.android.appget.databinding.FragmentDashboardBinding
+import com.jpb.appget.lite.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 

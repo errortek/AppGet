@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.notifications
+package com.jpb.appget.lite.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.jpb.android.appget
+package com.jpb.appget.lite
 
 import android.app.DownloadManager
 import android.net.Uri

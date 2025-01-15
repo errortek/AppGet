@@ -1,4 +1,4 @@
-package com.jpb.android.appget
+package com.jpb.appget.lite
 
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigationrail.NavigationRailView
-import com.jpb.android.appget.databinding.ActivityMainBinding
+import com.jpb.appget.lite.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

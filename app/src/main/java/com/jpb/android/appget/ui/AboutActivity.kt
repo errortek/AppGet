@@ -1,10 +1,10 @@
-package com.jpb.android.appget.ui
+package com.jpb.appget.lite.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.jpb.android.appget.R
+import com.jpb.appget.lite.R
 
 class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

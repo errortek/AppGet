@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.notifications
+package com.jpb.appget.lite.ui.notifications
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
-import com.jpb.android.appget.UpdateActivity
-import com.jpb.android.appget.databinding.FragmentNotificationsBinding
-import com.jpb.android.appget.ui.AboutActivity
+import com.jpb.appget.lite.UpdateActivity
+import com.jpb.appget.lite.databinding.FragmentNotificationsBinding
+import com.jpb.appget.lite.ui.AboutActivity
 
 class NotificationsFragment : Fragment() {
 

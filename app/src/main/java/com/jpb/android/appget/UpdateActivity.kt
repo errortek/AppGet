@@ -1,4 +1,4 @@
-package com.jpb.android.appget
+package com.jpb.appget.lite
 
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo

@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.home
+package com.jpb.appget.lite.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

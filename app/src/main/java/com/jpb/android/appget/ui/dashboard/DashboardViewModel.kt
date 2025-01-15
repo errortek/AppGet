@@ -1,4 +1,4 @@
-package com.jpb.android.appget.ui.dashboard
+package com.jpb.appget.lite.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
