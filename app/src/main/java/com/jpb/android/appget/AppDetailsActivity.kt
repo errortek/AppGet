@@ -48,54 +48,38 @@ class AppDetailsActivity : AppCompatActivity() {
         })
         supportActionBar?.title = appName
         appTitleTextView.text = appName
-        readUpdateDate(appName)
-        readVersion(appName)
-        readDescription(appName)
-        readChangelog(appName)
-        readDevName(appName)
-        readMinApi(appName)
-        readTargetApi(appName)
+        fetchAppInfo(appName, 5)
+        fetchAppInfo(appName, 2)
+        fetchAppInfo(appName, 6)
+        fetchAppInfo(appName, 7)
+        fetchAppInfo(appName, 1)
+        fetchAppInfo(appName, 3)
+        fetchAppInfo(appName, 4)
     }
 
-    private fun readUpdateDate(AppName: String?) {
+    private fun fetchAppInfo(AppName: String?, Mode: Int?) {
         object : Thread() {
             override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/updated_date.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.AppReleaseDate) as TextView
-                        text.text = "Updated: $bo"
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
+                val path: String
+                when (Mode) {
+                    1 -> {path =
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/developerName.txt"}
+                    2 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/version.txt"}
+                    3 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/minapi.txt"}
+                    4 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/targetapi.txt"}
+                    5 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/updatedDate.txt"}
+                    6 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/description.txt"}
+                    7 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/changelog.txt"}
+                    else -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/developerName.txt"}
                 }
-            }
-        }.start()
-    }
-
-    private fun readVersion(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/version.txt"
-                var u: URL? = null
+                var u: URL?
                 try {
                     u = URL(path)
                     val c = u.openConnection() as HttpURLConnection
@@ -108,173 +92,24 @@ class AppDetailsActivity : AppCompatActivity() {
                     bo.write(buffer) // Write Into Buffer.
 
                     runOnUiThread {
-                        val text = findViewById<View>(R.id.AppVersion) as TextView
-                        text.text = "Version: $bo"
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
+                        when (Mode) {
+                            1 -> {val text = findViewById<View>(R.id.AppDev) as TextView
+                                text.text = bo.toString()}
+                            2 -> {val text = findViewById<View>(R.id.AppVersion) as TextView
+                                text.text = "Version: $bo"}
+                            3 -> {val text = findViewById<View>(R.id.MinAPIDetails) as TextView
+                                text.text = "API $bo"}
+                            4 -> {val text = findViewById<View>(R.id.TargetAPIDetails) as TextView
+                                text.text = "API $bo"}
+                            5 -> {val text = findViewById<View>(R.id.AppReleaseDate) as TextView
+                                text.text = "Updated: $bo"}
+                            6 -> {val text = findViewById<View>(R.id.ShortDesc) as TextView
+                                text.text = bo.toString()}
+                            7 -> {val text = findViewById<View>(R.id.Changelog) as TextView
+                                text.text = bo.toString()}
+                            else -> {val text = findViewById<View>(R.id.AppDev) as TextView
+                                text.text = bo.toString()}
                         }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }.start()
-    }
-
-    private fun readDescription(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/description.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.ShortDesc) as TextView
-                        text.text = bo.toString()
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }.start()
-    }
-
-    private fun readChangelog(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/changelog.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.Changelog) as TextView
-                        text.text = bo.toString()
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }.start()
-    }
-
-    private fun readDevName(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/developerName.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.AppDev) as TextView
-                        text.text = bo.toString()
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }.start()
-    }
-
-    private fun readMinApi(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/minapi.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.MinAPIDetails) as TextView
-                        text.text = bo.toString()
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }.start()
-    }
-
-    private fun readTargetApi(AppName: String?) {
-        object : Thread() {
-            override fun run() {
-                val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/targetapi.txt"
-                var u: URL? = null
-                try {
-                    u = URL(path)
-                    val c = u.openConnection() as HttpURLConnection
-                    c.requestMethod = "GET"
-                    c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        val text = findViewById<View>(R.id.TargetAPIDetails) as TextView
-                        text.text = bo.toString()
                         try {
                             bo.close()
                         } catch (e: IOException) {
