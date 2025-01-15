@@ -45,8 +45,8 @@ jobs:
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v2-20240802"
+          automatic_release_tag: "v2-20250115"
           prerelease: true
-          title: "v2-20240802"
+          title: "v2-20250115"
           files: |
             ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
