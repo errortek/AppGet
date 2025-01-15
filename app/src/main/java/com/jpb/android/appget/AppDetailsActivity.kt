@@ -1,11 +1,15 @@
 package com.jpb.appget.lite
 
 import android.app.DownloadManager
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -55,6 +59,7 @@ class AppDetailsActivity : AppCompatActivity() {
         fetchAppInfo(appName, 1)
         fetchAppInfo(appName, 3)
         fetchAppInfo(appName, 4)
+        fetchAppInfo(appName, 8)
     }
 
     private fun fetchAppInfo(AppName: String?, Mode: Int?) {
@@ -76,6 +81,8 @@ class AppDetailsActivity : AppCompatActivity() {
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/description.txt"}
                     7 -> {path =
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/changelog.txt"}
+                    8 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/icon.png"}
                     else -> {path =
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/developerName.txt"}
                 }
@@ -85,37 +92,46 @@ class AppDetailsActivity : AppCompatActivity() {
                     val c = u.openConnection() as HttpURLConnection
                     c.requestMethod = "GET"
                     c.connect()
-                    val `in` = c.inputStream
-                    val bo = ByteArrayOutputStream()
-                    val buffer = ByteArray(1024)
-                    `in`.read(buffer) // Read from Buffer.
-                    bo.write(buffer) // Write Into Buffer.
-
-                    runOnUiThread {
-                        when (Mode) {
-                            1 -> {val text = findViewById<View>(R.id.AppDev) as TextView
-                                text.text = bo.toString()}
-                            2 -> {val text = findViewById<View>(R.id.AppVersion) as TextView
-                                text.text = "Version: $bo"}
-                            3 -> {val text = findViewById<View>(R.id.MinAPIDetails) as TextView
-                                text.text = "API $bo"}
-                            4 -> {val text = findViewById<View>(R.id.TargetAPIDetails) as TextView
-                                text.text = "API $bo"}
-                            5 -> {val text = findViewById<View>(R.id.AppReleaseDate) as TextView
-                                text.text = "Updated: $bo"}
-                            6 -> {val text = findViewById<View>(R.id.ShortDesc) as TextView
-                                text.text = bo.toString()}
-                            7 -> {val text = findViewById<View>(R.id.Changelog) as TextView
-                                text.text = bo.toString()}
-                            else -> {val text = findViewById<View>(R.id.AppDev) as TextView
-                                text.text = bo.toString()}
+                    when (Mode) {
+                        8 -> {
+                            val handler = Handler(Looper.getMainLooper())
+                            val `in` = URL(path).openStream()
+                            val appIconImageView = findViewById<ImageView>(R.id.AppIcon)
+                            var bitmap = BitmapFactory.decodeStream(`in`)
+                            handler.post{appIconImageView.setImageBitmap(bitmap)}
                         }
-                        try {
-                            bo.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
+                        else -> {
+                            val `in` = c.inputStream
+                            val bo = ByteArrayOutputStream()
+                            val buffer = ByteArray(1024)
+                            `in`.read(buffer) // Read from Buffer.
+                            bo.write(buffer) // Write Into Buffer.
+                            runOnUiThread {
+                                when (Mode) {
+                                    1 -> {val text = findViewById<View>(R.id.AppDev) as TextView
+                                        text.text = bo.toString()}
+                                    2 -> {val text = findViewById<View>(R.id.AppVersion) as TextView
+                                        text.text = "Version: $bo"}
+                                    3 -> {val text = findViewById<View>(R.id.MinAPIDetails) as TextView
+                                        text.text = "API $bo"}
+                                    4 -> {val text = findViewById<View>(R.id.TargetAPIDetails) as TextView
+                                        text.text = "API $bo"}
+                                    5 -> {val text = findViewById<View>(R.id.AppReleaseDate) as TextView
+                                        text.text = "Updated: $bo"}
+                                    6 -> {val text = findViewById<View>(R.id.ShortDesc) as TextView
+                                        text.text = bo.toString()}
+                                    7 -> {val text = findViewById<View>(R.id.Changelog) as TextView
+                                        text.text = bo.toString()}
+                                    else -> {val text = findViewById<View>(R.id.AppDev) as TextView
+                                        text.text = bo.toString()}
+                                }
+                                try {
+                                    bo.close()
+                                } catch (e: IOException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                        }}
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
