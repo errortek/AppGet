@@ -43,13 +43,13 @@ public class AppGetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appget);
-        textView10e = this.findViewById(R.id.textView10e);
-        textView11e = this.findViewById(R.id.textView11e);
-        textView14e = this.findViewById(R.id.textView14e);
-        textView16e = this.findViewById(R.id.textView16e);
+        textView10e = this.findViewById(R.id.AppVersion);
+        textView11e = this.findViewById(R.id.AppReleaseDate);
+        textView14e = this.findViewById(R.id.ShortDesc);
+        textView16e = this.findViewById(R.id.Changelog);
         chip3 = this.findViewById(R.id.chip3);
         chip4 = this.findViewById(R.id.chip4);
-        installbut = this.findViewById(R.id.button4);
+        installbut = this.findViewById(R.id.InstallButton);
         installbut.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
@@ -101,7 +101,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView11e);
+                            TextView text = (TextView) findViewById(R.id.AppReleaseDate);
                             text.setText("Updated: " + bo.toString());
                             try {
                                 bo.close();
@@ -138,7 +138,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView10e);
+                            TextView text = (TextView) findViewById(R.id.AppVersion);
                             text.setText("Version: " + bo.toString());
                             try {
                                 bo.close();
@@ -175,7 +175,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView14e);
+                            TextView text = (TextView) findViewById(R.id.ShortDesc);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
@@ -212,7 +212,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView16e);
+                            TextView text = (TextView) findViewById(R.id.Changelog);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
@@ -249,7 +249,7 @@ public class AppGetActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            TextView text = (TextView) findViewById(R.id.textView13e);
+                            TextView text = (TextView) findViewById(R.id.LongDesc);
                             text.setText(bo.toString());
                             try {
                                 bo.close();
