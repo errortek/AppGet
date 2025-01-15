@@ -12,6 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.card.MaterialCardView
@@ -24,13 +26,16 @@ import java.net.URL
 class UpdateActivity : AppCompatActivity() {
     var onlineVersionCode = 0
     var versionCode = 0
-    var drawable_appget : Drawable? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         readVersion()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.update_root)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         val appgeticon = findViewById<ImageView>(R.id.appgeticon)
         val appget_update = findViewById<Button>(R.id.button6)
         val appget_progress = findViewById<CircularProgressIndicator>(R.id.appget_progress)
