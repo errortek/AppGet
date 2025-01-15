@@ -33,6 +33,7 @@ class AppDetailsActivity : AppCompatActivity() {
         val ShortDescriptionTextView = this.findViewById<TextView>(R.id.ShortDesc)
         val ChangelogTextView = this.findViewById<TextView>(R.id.Changelog)
         val installbut = this.findViewById<Button>(R.id.InstallButton)
+        val appTitleTextView = this.findViewById<TextView>(R.id.AppTitle)
         installbut.setOnClickListener(View.OnClickListener {
             val downloadmanager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             val uri =
@@ -45,6 +46,8 @@ class AppDetailsActivity : AppCompatActivity() {
             request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, appName + ".apk")
             downloadmanager.enqueue(request)
         })
+        supportActionBar?.title = appName
+        appTitleTextView.text = appName
         readUpdateDate(appName)
         readVersion(appName)
         readDescription(appName)
