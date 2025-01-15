@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="5.72M"
+                        android:text="Unavailable"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="API 22"
+                        android:text="Unavailable"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
@@ -138,7 +138,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="API 34"
+                        android:text="Unavailable"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
@@ -169,21 +169,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Version: e" />
+                    android:text="Unavailable" />
 
                 <TextView
                     android:id="@+id/AppReleaseDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="hello world! (placeholder)" />
+                    android:text="Unavailable" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/ShortDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hello world! (placeholder)"
+                android:text="Unavailable"
                 android:textStyle="bold" />
 
             <TextView
@@ -198,7 +198,7 @@
                 android:id="@+id/LongDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hello world! (placeholder)" />
+                android:text="Unavailable" />
 
             <TextView
                 android:id="@+id/ChangelogTitle"
@@ -216,7 +216,7 @@
                     android:id="@+id/Changelog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="hello world! (placeholder)" />
+                    android:text="Unavailable" />
             </ScrollView>
 
         </LinearLayout>
