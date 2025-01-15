@@ -60,6 +60,7 @@ class AppDetailsActivity : AppCompatActivity() {
         fetchAppInfo(appName, 3)
         fetchAppInfo(appName, 4)
         fetchAppInfo(appName, 8)
+        fetchAppInfo(appName, 9)
     }
 
     private fun fetchAppInfo(AppName: String?, Mode: Int?) {
@@ -83,6 +84,8 @@ class AppDetailsActivity : AppCompatActivity() {
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/changelog.txt"}
                     8 -> {path =
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/icon.png"}
+                    9 -> {path =
+                        "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/size.txt"}
                     else -> {path =
                         "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/developerName.txt"}
                 }
@@ -121,6 +124,8 @@ class AppDetailsActivity : AppCompatActivity() {
                                     6 -> {val text = findViewById<View>(R.id.ShortDesc) as TextView
                                         text.text = bo.toString()}
                                     7 -> {val text = findViewById<View>(R.id.Changelog) as TextView
+                                        text.text = bo.toString()}
+                                    9 -> {val text = findViewById<View>(R.id.AppSizeDetails) as TextView
                                         text.text = bo.toString()}
                                     else -> {val text = findViewById<View>(R.id.AppDev) as TextView
                                         text.text = bo.toString()}
