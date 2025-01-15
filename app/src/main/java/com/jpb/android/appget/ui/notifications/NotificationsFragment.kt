@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
-import com.jpb.android.appget.STActivity2
 import com.jpb.android.appget.UpdateActivity
 import com.jpb.android.appget.databinding.FragmentNotificationsBinding
 import com.jpb.android.appget.ui.AboutActivity

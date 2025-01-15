@@ -10,11 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.card.MaterialCardView
-import com.jpb.android.appget.AppGetActivity
-import com.jpb.android.appget.LCActivity
-import com.jpb.android.appget.NotesActivity
-import com.jpb.android.appget.STActivity2
-import com.jpb.android.appget.USPLTSActivity
+import com.jpb.android.appget.AppDetailsActivity
 import com.jpb.android.appget.databinding.FragmentHomeBinding
 
 
@@ -39,25 +35,25 @@ class HomeFragment : Fragment() {
 
         val button3: MaterialCardView = binding.button3
         button3.setOnClickListener {
-            val intent = Intent(this@HomeFragment.requireContext(), AppGetActivity::class.java)
+            val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
             startActivity(intent)
         }
 
         val button100: MaterialCardView = binding.button100
         button100.setOnClickListener {
-            val intent = Intent(this@HomeFragment.requireContext(), NotesActivity::class.java)
+            val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
             startActivity(intent)
         }
 
         val card: MaterialCardView = binding.card
         card.setOnClickListener {
-            val intent = Intent(this@HomeFragment.requireContext(), STActivity2::class.java)
+            val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
             startActivity(intent)
         }
 
         val card2: MaterialCardView = binding.card2
         card2.setOnClickListener {
-            val intent = Intent(this@HomeFragment.requireContext(), LCActivity::class.java)
+            val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
             startActivity(intent)
         }
 
