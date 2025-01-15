@@ -18,6 +18,8 @@ import java.net.URL
 
 class AppDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val bundle = intent.extras
+        val appName = bundle?.getString("App")
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_app_details)
@@ -34,26 +36,26 @@ class AppDetailsActivity : AppCompatActivity() {
         installbut.setOnClickListener(View.OnClickListener {
             val downloadmanager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             val uri =
-                Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/app-debug.apk")
+                Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/"+appName+"/app-debug.apk")
 
             val request = DownloadManager.Request(uri)
-            request.setTitle("AppGet")
+            request.setTitle(appName)
             request.setDescription("Downloading")
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "AppGet.apk")
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, appName + ".apk")
             downloadmanager.enqueue(request)
         })
-        readUpdateDate()
-        readVersion()
-        readDescription()
-        readChangelog()
+        readUpdateDate(appName)
+        readVersion(appName)
+        readDescription(appName)
+        readChangelog(appName)
     }
 
-    private fun readUpdateDate() {
+    private fun readUpdateDate(AppName: String?) {
         object : Thread() {
             override fun run() {
                 val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/updated_date.txt"
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/updated_date.txt"
                 var u: URL? = null
                 try {
                     u = URL(path)
@@ -82,11 +84,11 @@ class AppDetailsActivity : AppCompatActivity() {
         }.start()
     }
 
-    private fun readVersion() {
+    private fun readVersion(AppName: String?) {
         object : Thread() {
             override fun run() {
                 val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/version.txt"
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/version.txt"
                 var u: URL? = null
                 try {
                     u = URL(path)
@@ -115,11 +117,11 @@ class AppDetailsActivity : AppCompatActivity() {
         }.start()
     }
 
-    private fun readDescription() {
+    private fun readDescription(AppName: String?) {
         object : Thread() {
             override fun run() {
                 val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/description.txt"
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/description.txt"
                 var u: URL? = null
                 try {
                     u = URL(path)
@@ -148,11 +150,11 @@ class AppDetailsActivity : AppCompatActivity() {
         }.start()
     }
 
-    private fun readChangelog() {
+    private fun readChangelog(AppName: String?) {
         object : Thread() {
             override fun run() {
                 val path =
-                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/AppGet/changelog.txt"
+                    "https://github.com/jpbandroid/AppGet-Resources/raw/main/"+AppName+"/changelog.txt"
                 var u: URL? = null
                 try {
                     u = URL(path)

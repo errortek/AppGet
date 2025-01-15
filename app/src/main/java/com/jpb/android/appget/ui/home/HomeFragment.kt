@@ -36,24 +36,28 @@ class HomeFragment : Fragment() {
         val button3: MaterialCardView = binding.button3
         button3.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
+            intent.putExtra("App", "AppGet")
             startActivity(intent)
         }
 
         val button100: MaterialCardView = binding.button100
         button100.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
+            intent.putExtra("App", "Notes")
             startActivity(intent)
         }
 
         val card: MaterialCardView = binding.card
         card.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
+            intent.putExtra("App", "ScratchTappy")
             startActivity(intent)
         }
 
         val card2: MaterialCardView = binding.card2
         card2.setOnClickListener {
             val intent = Intent(this@HomeFragment.requireContext(), AppDetailsActivity::class.java)
+            intent.putExtra("App", "LibChecker")
             startActivity(intent)
         }
 
