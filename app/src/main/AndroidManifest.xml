@@ -24,42 +24,6 @@
             android:name=".AppDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".WritingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ClickerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AppStoreActivity"
-            android:exported="false" />
-        <activity
-            android:name=".sysinfoToolsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".utilsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".zbApps"
-            android:exported="false" />
-        <activity
-            android:name=".jpbApps"
-            android:exported="false" />
-        <activity
-            android:name=".LCActivity"
-            android:exported="false"
-            android:label=""
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".NotesActivity"
-            android:exported="false"
-            android:label=""
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".USPLTSActivity"
-            android:exported="false"
-            android:label=""
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".ui.AboutActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -67,16 +31,6 @@
             android:name=".UpdateActivity"
             android:exported="false"
             android:label="Updates"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".STActivity2"
-            android:exported="false"
-            android:label=""
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".AppGetActivity"
-            android:exported="false"
-            android:label=""
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
