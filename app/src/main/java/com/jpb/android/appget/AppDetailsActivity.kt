@@ -41,7 +41,7 @@ class AppDetailsActivity : AppCompatActivity() {
         installbut.setOnClickListener(View.OnClickListener {
             val downloadmanager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             val uri =
-                Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/"+appName+"/app-debug.apk")
+                Uri.parse("https://github.com/jpbandroid/AppGet-Resources/raw/main/"+appName+"/app.apk")
 
             val request = DownloadManager.Request(uri)
             request.setTitle(appName)
